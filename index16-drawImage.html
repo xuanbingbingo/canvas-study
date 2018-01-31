@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>要使用的图像：</p>
+<img id="tulip" src="1.jpg" alt="The Tulip" />
+
+<p>画布：</p>
+<canvas id="myCanvas" width="500" height="300" style="border:1px solid #d3d3d3;"></canvas>
+
+<script>
+
+var c=document.getElementById("myCanvas");
+var ctx=c.getContext("2d");
+var image = new Image()
+image.src="./1.jpg"
+image.onload = function(){
+  let w = this.width;
+  let h = this.height;
+  c.width = h;
+  c.height = w;
+  ctx.save()
+  ctx.translate(h/2,w/2);
+  ctx.rotate(90*Math.PI/180)
+  ctx.drawImage(this, -w/2,-h/2, w, h)
+  ctx.restore()
+}
+</script>
+
+</body>
+</html>
